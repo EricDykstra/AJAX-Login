@@ -1,7 +1,16 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
-
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+  $('#upload').click(function(){
+    filepicker.pick({
+        mimetypes: ['image/*', 'text/plain'],
+        container: 'window',
+        services:['COMPUTER', 'WEBCAM'],
+      },
+      function(FPFile){
+        $.post('/upload', FPFile)
+      },
+      function(FPError){
+        alert(FPError.toString());
+      }
+    );
+  });
 });

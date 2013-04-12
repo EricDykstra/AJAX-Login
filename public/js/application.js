@@ -26,6 +26,15 @@ $(document).ready(function() {
     return false;
   });
 
+  $('#logout').click(function(e){
+    e.preventDefault();
+    console.log("you made it!");
+    // $.get('/login', function(result){
+    //   $('.login').html(result).slideDown(300);
+    // })
+    return false;
+  });
+
 });
 
 

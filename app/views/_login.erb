@@ -5,6 +5,7 @@
   <button type="submit" id="lisu" value="Log In">Log In</button>
   <button type="submit" id="lisu" value="Sign Up">Sign Up</button>
 </form>
+<% p session %>
 
 <script>
 
@@ -14,18 +15,10 @@
     var posting = $.post('/login', $('#loginform').serialize());
     console.log(posting);
     posting.done(function() {
-      $('.log').html('<a href="/logout"><button>Log Out</button</a>')
+      $('.log').html('<form action="/login" method="get"><button id="dlog" type="submit">Log Out</button></form>')
       $('.login').slideUp(300);
     });
     return false;
-    $('#logout').click(function(e){
-      e.preventDefault();
-      console.log("you made it!");
-      // $.get('/login', function(result){
-      //   $('.login').html(result).slideDown(300);
-      // })
-      return false;
-    });
   });
 
 </script>

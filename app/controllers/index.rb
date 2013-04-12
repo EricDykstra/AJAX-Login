@@ -10,11 +10,13 @@ post '/upload/?' do
 end
 
 get '/login' do
+  session[:id] = nil if session[:id]
   erb :_login, :layout => false
 end
 
 get '/logout' do
   session[:user_id] = nil
+  ""
 end
 
 post '/login' do
@@ -23,15 +25,16 @@ post '/login' do
   @user = User.find_by_name(@username)
   if @user
     if @user.password == @password
-      redirect '/'
-    else
-      redirect '/?error=Invalid%20username%20or%20password'
+    #   redirect '/'
+    # else
+    #   redirect '/?error=Invalid%20username%20or%20password'
     end
   else
     @user = User.create :name => @username,
                         :password => @password
   end
   session[:id] = @user.id
+  return ""
 end
 
 get '/users/:user_id/albums' do

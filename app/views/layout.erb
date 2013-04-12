@@ -14,20 +14,26 @@
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
-  <script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js">
-  </script>
+  <script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script>
+  <link href='http://fonts.googleapis.com/css?family=Exo:400,700' rel='stylesheet' type='text/css'>
 
   <script>
   filepicker.setKey('AxLfQbC8KQ7ikhkWrcsbkz');
   </script>
 
 
-  <title></title>
+  <title>bi-weekly booth</title>
 </head>
 <body>
-  <%= yield %>
-
-
-
+  <div class="verbal">
+    <nav>
+    <h1> bi-weekly booth </h1>
+    <div class="log"><%= session[:user_id] ? '<a href="/logout"><button id="logout">Log Out</button</a>' : '<form action="/login" method="get"><button id="dlog" type="submit">Log In</button></form>' %></div>
+    </nav>
+    <div class="login"></div>
+    <div class="content">
+      <%= yield %>
+    </div>
+  </div>
 </body>
 </html>

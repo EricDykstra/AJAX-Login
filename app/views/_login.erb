@@ -1,0 +1,31 @@
+<h3>Create account or log in</h3>
+<form id="loginform" method="post" action="/login">
+  <input type="text" name="username" placeholder="username">
+  <input type="password" name="password" placeholder="password">
+  <button type="submit" id="lisu" value="Log In">Log In</button>
+  <button type="submit" id="lisu" value="Sign Up">Sign Up</button>
+</form>
+
+<script>
+
+  $('#lisu').click(function(e){
+    e.preventDefault();
+    console.log($('#loginform').serialize);
+    var posting = $.post('/login', $('#loginform').serialize());
+    console.log(posting);
+    posting.done(function() {
+      $('.log').html('<a href="/logout"><button>Log Out</button</a>')
+      $('.login').slideUp(300);
+    });
+    return false;
+    $('#logout').click(function(e){
+      e.preventDefault();
+      console.log("you made it!");
+      // $.get('/login', function(result){
+      //   $('.login').html(result).slideDown(300);
+      // })
+      return false;
+    });
+  });
+
+</script>
